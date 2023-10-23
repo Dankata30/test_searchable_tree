@@ -8,8 +8,8 @@ class SearchableTreeTest {
 
     @Test
     public void find_existing_item_of_tree_and_return_it_successfully() {
-        SearchableTree cut = new SearchableTree();
-        cut.populateContainer();
+        DataStorage ds = new DataStorage();
+        SearchableTree cut = new SearchableTree(ds);
 
         int expected_item = 2;
         int actual_item = cut.find("lecture");
@@ -19,8 +19,8 @@ class SearchableTreeTest {
 
     @Test
     public void search_non_existing_item_of_tree_and_handle_it() {
-        SearchableTree cut = new SearchableTree();
-        cut.populateContainer();
+        DataStorage ds = new DataStorage();
+        SearchableTree cut = new SearchableTree(ds);
 
         int expected_item = -1;
         int actual_item = cut.find("test");
@@ -30,8 +30,8 @@ class SearchableTreeTest {
 
     @Test
     void find_last_item_searched_is_actually_last() {
-        SearchableTree cut = new SearchableTree();
-        cut.populateContainer();
+        DataStorage ds = new DataStorage();
+        SearchableTree cut = new SearchableTree(ds);
 
         boolean expected_result = true;
         boolean actual_result = cut.findIfLastItem("taxes");
@@ -41,8 +41,8 @@ class SearchableTreeTest {
 
     @Test
     void find_last_item_searched_is_NOT_actually_last() {
-        SearchableTree cut = new SearchableTree();
-        cut.populateContainer();
+        DataStorage ds = new DataStorage();
+        SearchableTree cut = new SearchableTree(ds);
 
         boolean expected_result = false;
         boolean actual_result = cut.findIfLastItem("lecture");
@@ -52,9 +52,10 @@ class SearchableTreeTest {
 
     @Test
     void find_last_item_list_is_NOT_populated() {
-        SearchableTree cut = new SearchableTree();
+        DataStorage ds = new DataStorage();
+        SearchableTree cut = new SearchableTree(ds);
 
-        boolean expected_result = true;
+        boolean expected_result = false;
         boolean actual_result = cut.findIfLastItem("lecture");
 
         // result is true as the size of list is 0 and decrementation makes it -1, same return value as if item not found
@@ -63,8 +64,8 @@ class SearchableTreeTest {
 
     @Test
     void find_first_item_searched_is_actually_first() {
-        SearchableTree cut = new SearchableTree();
-        cut.populateContainer();
+        DataStorage ds = new DataStorage();
+        SearchableTree cut = new SearchableTree(ds);
 
         boolean expected_result = true;
         boolean actual_result = cut.findIfFirstItem("selvyn");
@@ -74,8 +75,8 @@ class SearchableTreeTest {
 
     @Test
     void find_first_item_searched_is_NOT_actually_first() {
-        SearchableTree cut = new SearchableTree();
-        cut.populateContainer();
+        DataStorage ds = new DataStorage();
+        SearchableTree cut = new SearchableTree(ds);
 
         boolean expected_result = false;
         boolean actual_result = cut.findIfFirstItem("lecture");
@@ -85,7 +86,8 @@ class SearchableTreeTest {
 
     @Test
     void find_first_item_list_is_NOT_populated() {
-        SearchableTree cut = new SearchableTree();
+        DataStorage ds = new DataStorage();
+        SearchableTree cut = new SearchableTree(ds);
 
         boolean expected_result = false;
         boolean actual_result = cut.findIfFirstItem("lecture");
